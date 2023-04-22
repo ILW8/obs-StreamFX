@@ -362,7 +362,7 @@ jobs:
       shell: bash
       run: |
         mkdir "${{ github.workspace }}/build/package"
-        cmake --build "${{ github.workspace }}/build/ci" --config RelWithDebInfo --target PACKAGE_7Z
+        cmake --build "${{ github.workspace }}/build/ci" --config Debug --target PACKAGE_7Z
     - name: "Packaging (Windows)"
       if: startsWith( matrix.runner, 'windows' )
       shell: cmd
@@ -384,7 +384,6 @@ jobs:
       shell: bash
       run: |
         cmake --build "${{ github.workspace }}/build/ci" --config Debug --target clang-format
-        cmake --build "${{ github.workspace }}/build/ci" --config RelWithDebInfo --target clang-format
         git --no-pager diff --patch --minimal HEAD --
         git update-index --refresh
         git diff-index --quiet HEAD --
